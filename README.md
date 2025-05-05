@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Know Your Fan - Frontend
 
-## Getting Started
+Este é o frontend da aplicação **Know Your Fan**, desenvolvida para a organização de eSports **FURIA**, com o objetivo de engajar e analisar os seus fãs de forma gamificada e interativa.
 
-First, run the development server:
+Este repositório corresponde à interface web (frontend). O backend está disponível [neste repositório](https://github.com/DudsFerraz/Furia-Know-Your-fan-backend).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌟 Visão Geral
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+A aplicação web permite que os usuários:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+* Criem seus perfis e compartilhem dados pessoais e de redes sociais.
+* Ganhem XP e **FURIA Cash** ao realizarem atividades como compras, eventos e interações externas.
+* Subam de nível e troquem moedas virtuais por brindes na loja.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚙️ Tecnologias Utilizadas
 
-## Learn More
+* **React 18** com **Next.js** (App Router)
+* **Tailwind CSS** para estilização
+* **Axios** para comunicação com a API backend
+* **Shadcn/UI** para componentes acessíveis e reutilizáveis
 
-To learn more about Next.js, take a look at the following resources:
+## 🔧 Funcionalidades Principais
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* Cadastro e login via token JWT.
+* Upload de foto do CPF para validação via Google Vision API.
+* Conexão com Twitter/X para verificar se o usuário segue a FURIA.
+* Consulta de perfil, XP e conquistas.
+* Ranking global dos fãs.
+* Loja para resgate de brindes usando FURIA Cash.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔐 Integração com Backend
 
-## Deploy on Vercel
+A aplicação consome a API via Axios com autenticação JWT armazenada localmente.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+As principais chamadas incluem:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* `getInfo(userId)`
+* `buy(userId, price)`
+* `uploadDocument`
+* `connectTwitter`
+
+## 🏠 Componentes Principais
+
+* `Register`: Tela de cadastro com coleta de dados.
+* `Profile`: Visualização do perfil e progresso do usuário.
+* `DocumentUpload`: Upload de documento com feedback de validação.
+* `Socials`: Conexão com Twitter/X.
+* `InfoXp`: Entrada de dados sobre eventos, compras e atividades externas.
+* `Ranking`: Exibe leaderboard com XP.
+* `Loja`: Interface de compra com feedback de erro e saldo.
+
+## 🛏️ Layout da Interface
+
+A interface principal é estruturada em abas (`Tabs`) com transições dinâmicas entre:
+
+* Meu Perfil
+* Upload Documento
+* Redes Sociais
+* +Info +XP
+* Ranking
+* Loja
+
+## 🔑 Autenticação e Armazenamento
+
+* JWT é salvo no `localStorage` após login via callback URL.
+* O payload do token é decodificado para extrair `userId` e requisitar os dados do usuário.
+
+## 🚀 Futuras Expansões
+
+* Conexão com Instagram e Twitch.
+* Suporte a dark mode.
+* Sistema de badges e conquistas visuais.
+* Integração com ChatBot interativo (https://github.com/DudsFerraz/FuriaBot).
+
+## 🐾 Confira a aplicação [clicando aqui](https://furia-know-you-fan-frontend.vercel.app/)
+
+---
